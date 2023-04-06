@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ToDo</string>
+    <string name="add">+</string>
+    <string name="submit">submit</string>
+
+
+    <string name="activity">事务名称</string>
+    <string name="everyday">每日</string>
+</resources>
