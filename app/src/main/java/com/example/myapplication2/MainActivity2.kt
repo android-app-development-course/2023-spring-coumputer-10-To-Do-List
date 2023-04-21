@@ -16,7 +16,7 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        var tpye: Int
+        var type: Int
         var name: String
         var startTimeStamp: Long
         var EndTimeStamp: Long
