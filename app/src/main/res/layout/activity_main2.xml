@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
+    <View
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -27,28 +31,30 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@null"
                 android:checked="true"
-                android:drawableTop="@drawable/radio_daliy"
+                android:drawableTop="@drawable/radio_button_daliy"
                 android:paddingVertical="10dp"
                 android:paddingLeft="15dp"
                 android:paddingRight="10dp"
                 android:text="日常"
                 android:textSize="18sp"
+                android:textColor="@color/purple_500"
                 android:textAlignment="center" />
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@null"
-                android:drawableTop="@drawable/radio_work"
+                android:drawableTop="@drawable/radio_button_work"
                 android:padding="10dp"
                 android:text="学习"
                 android:textSize="18sp"
+                android:textColor="@color/purple_200"
                 android:textAlignment="center" />
 
             <RadioButton
@@ -56,10 +62,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@null"
-                android:drawableTop="@drawable/radio_sport"
+                android:drawableTop="@drawable/radio_button_sport"
                 android:padding="10dp"
                 android:text="运动"
                 android:textSize="18sp"
+                android:textColor="@color/purple_200"
                 android:textAlignment="center" />
 
             <RadioButton
@@ -67,17 +74,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@null"
-                android:drawableTop="@drawable/radio_joy"
+                android:drawableTop="@drawable/radio_button_fun"
                 android:paddingVertical="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="15dp"
                 android:text="娱乐"
+                android:textColor="@color/purple_200"
                 android:textSize="18sp"
                 android:textAlignment="center" />
         </RadioGroup>
 
         <EditText
-            android:id="@+id/editTextTextPostalAddress"
+            android:id="@+id/editText"
             style="@style/Widget.AppCompat.AutoCompleteTextView"
             android:layout_width="240dp"
             android:layout_height="60dp"
@@ -104,7 +112,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:background="@drawable/timepickbtn"
-                android:text="4 21\n13:21"
+                android:text="Start\ntime"
                 android:textSize="16sp" />
 
             <View
@@ -123,19 +131,75 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:background="@drawable/timepickbtn"
-                android:text="4 21\n13:21"
+                android:text="End\ntime"
                 android:textSize="16sp" />
 
 
         </LinearLayout>
 
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="66dp"
-            android:layout_height="36dp"
-            android:showText="false"
-            android:thumb="@drawable/switch_button"
-            android:track="@drawable/switch_background" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/edittext_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="是否置顶"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                tools:ignore="RtlHardcoded" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                app:sb_checked_color="@color/purple_500"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="是否每日循环"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                tools:ignore="RtlHardcoded" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                app:sb_checked_color="@color/purple_500"/>
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <Button
@@ -149,6 +213,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
