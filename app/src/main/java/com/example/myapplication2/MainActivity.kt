@@ -14,9 +14,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        val button = findViewById<Button>(R.id.button)
 
         // 数据传递
-        findViewById<Button>(R.id.button).setOnClickListener{
+        button.setOnClickListener{
             val data = "Hello SecondActivity"
 
             val intent = Intent(this, MainActivity2::class.java)
