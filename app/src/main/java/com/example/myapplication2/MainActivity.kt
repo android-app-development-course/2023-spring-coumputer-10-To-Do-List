@@ -7,6 +7,14 @@ import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 
+
+object AppData {
+    data class Todo(val name: String, val type : Int, val startTime: Time, val endTime: Time,
+                    val isRep : Boolean, val isTop : Boolean)
+    data class Time(var data : Long)
+}
+
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

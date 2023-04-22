@@ -1,28 +1,35 @@
 package com.example.myapplication2
 
-import android.animation.AnimatorSet
-import android.animation.ArgbEvaluator
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
+import android.animation.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import com.loper7.date_time_picker.DateTimeConfig
 import com.loper7.date_time_picker.dialog.CardDatePickerDialog
+import java.io.File
+import java.io.FileInputStream
+import java.security.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,17 +38,26 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        var type: Int
-        var name: String
-        var startTimeStamp: Long
-        var EndTimeStamp: Long
-        // TODO: get all result and save as json
+        val startTime = AppData.Time(-1)
+        val endTime = AppData.Time(-1)
+
+
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
+
+
+        val linearLayout3 = findViewById<LinearLayout>(R.id.linearLayout3)
+        val linearLayout4 = findViewById<LinearLayout>(R.id.linearLayout4)
+        val textView2 = findViewById<TextView>(R.id.textView2)
+        val textView3 = findViewById<TextView>(R.id.textView3)
+        val switch = findViewById<com.suke.widget.SwitchButton>(R.id.switch1)
+        val switch2 = findViewById<com.suke.widget.SwitchButton>(R.id.switch2)
+        animateSwitch(switch, linearLayout3, textView2)
+        animateSwitch(switch2, linearLayout4, textView3)
 
 
         // clear editText focus
         val editText = findViewById<EditText>(R.id.editText)
         val back = findViewById<View>(R.id.back)
-
         back.setOnClickListener {
             clearEditTextFocus(editText)
         }
@@ -55,30 +71,43 @@ class MainActivity2 : AppCompatActivity() {
         val checkedColor = ContextCompat.getColor(
             this, R.color.purple_500)
         val uncheckedColor = ContextCompat.getColor(this, R.color.purple_200)
-        val checkedSize = 1.15f // 单位为dp
-        val uncheckedSize = 1f // 单位为dp
-        animateRadioButton(radioButton, checkedColor, uncheckedColor, checkedSize, uncheckedSize)
-        animateRadioButton(radioButton2, checkedColor, uncheckedColor, checkedSize, uncheckedSize)
-        animateRadioButton(radioButton3, checkedColor, uncheckedColor, checkedSize, uncheckedSize)
-        animateRadioButton(radioButton4, checkedColor, uncheckedColor, checkedSize, uncheckedSize)
+        animateRadioButton(radioButton, checkedColor, uncheckedColor)
+        animateRadioButton(radioButton2, checkedColor, uncheckedColor)
+        animateRadioButton(radioButton3, checkedColor, uncheckedColor)
+        animateRadioButton(radioButton4, checkedColor, uncheckedColor)
 
         // time picker dialog and text&color animation
         val button3 = findViewById<Button>(R.id.button3)
         val button4 = findViewById<Button>(R.id.button4)
-        animateTimePickerButton(button3, "请选择事务开始时间")
-        animateTimePickerButton(button4, "请选择事务结束时间")
+        animateTimePickerButton(button3, "请选择事务开始时间", startTime)
+        animateTimePickerButton(button4, "请选择事务结束时间", endTime)
 
-
-
+//        val file = File("file/data.json")
+//        val inputStream = FileInputStream(file)
+//        val length = inputStream.available()
+//        val buffer = ByteArray(length)
+//        inputStream.read(buffer)
+//        val json = String(buffer, Charsets.UTF_8)
+//        inputStream.close()
 
         //
-        var data = intent.getStringExtra("extra_data")
+        val data = intent.getStringExtra("extra_data")
         if (data != null) {
             Log.d("SecondActivity", data)
         }
 
-        findViewById<Button>(R.id.button2).setOnClickListener {
-            finish()
+
+        val button2 = findViewById<Button>(R.id.button2)
+        button2.setOnClickListener {
+            val type = radioGroup.checkedRadioButtonId
+            val name = editText.text.toString()
+            val isTop = switch.isEnabled
+            val isRep = switch2.isEnabled
+            val todo = AppData.Todo(name, type, startTime, endTime, isTop, isRep)
+
+            if (checkTodo(todo)) {
+                finish()
+            }
         }
 
         val intent = Intent()
@@ -86,10 +115,10 @@ class MainActivity2 : AppCompatActivity() {
         setResult(RESULT_OK, intent)
     }
 
-
+    // add animation to RadioButton
     private fun animateRadioButton(radioButton: RadioButton,
                                    checkedColor: Int, uncheckedColor: Int,
-                                   checkedSize: Float, uncheckedSize: Float) {
+                                   checkedSize: Float = 1.15f, uncheckedSize: Float = 1f) {
         radioButton.setOnCheckedChangeListener { buttonView, isChecked ->
             val editText = findViewById<EditText>(R.id.editText)
             clearEditTextFocus(editText)
@@ -114,10 +143,25 @@ class MainActivity2 : AppCompatActivity() {
         }
     }
 
-    private fun animateTimePickerButton(button : Button, title : String) {
+
+    // add animation to TimePickerButton
+    private fun animateTimePickerButton(button : Button, title : String, time: AppData.Time) {
         button.setOnClickListener {
             val editText = findViewById<EditText>(R.id.editText)
             clearEditTextFocus(editText)
+
+            val scaleAnimation = ScaleAnimation(
+                1f, 1.1f, // 水平方向的起始和结束缩放比例
+                1f, 1.1f, // 垂直方向的起始和结束缩放比例
+                Animation.RELATIVE_TO_SELF, 0.5f, // 缩放中心点的 x 坐标
+                Animation.RELATIVE_TO_SELF, 0.5f // 缩放中心点的 y 坐标
+            ).apply {
+                duration = 200 // 动画持续时间，单位为毫秒
+                interpolator = AccelerateDecelerateInterpolator() // 加速减速插值器
+                fillAfter = true // 动画结束后保持最终状态
+            }
+            button.startAnimation(scaleAnimation)
+
             CardDatePickerDialog.builder(this)
                 .setTitle(title)
                 .setThemeColor(Color.parseColor("#6200EE"))
@@ -126,6 +170,7 @@ class MainActivity2 : AppCompatActivity() {
                 .showFocusDateInfo(false)
                 .setOnChoose {millisecond->
 
+                    time.data = millisecond
                     val sdf = SimpleDateFormat("MM-dd\nHH:mm", Locale.getDefault())
                     val dateString: String = sdf.format(Date(millisecond))
 
@@ -156,6 +201,17 @@ class MainActivity2 : AppCompatActivity() {
                     animatorSet.playTogether(colorAnimator, textAnimator)
                     animatorSet.start()
 
+                    val sizeAnimation = ScaleAnimation(
+                        1f, 0.92f, // 水平方向的起始和结束缩放比例
+                        1f, 0.92f, // 垂直方向的起始和结束缩放比例
+                        Animation.RELATIVE_TO_SELF, 0.5f, // 缩放中心点的 x 坐标
+                        Animation.RELATIVE_TO_SELF, 0.5f // 缩放中心点的 y 坐标
+                    ).apply {
+                        duration = 200 // 动画持续时间，单位为毫秒
+                        interpolator = AccelerateDecelerateInterpolator() // 加速减速插值器
+                        fillAfter = true // 动画结束后保持最终状态
+                    }
+                    button.startAnimation(sizeAnimation)
 
                 }.build().show()
         }
@@ -181,8 +237,8 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun interpolateChar(oldChar: Char, newChar: Char, fraction: Float): Char {
-        val oldInt = oldChar.toInt()
-        val newInt = newChar.toInt()
+        val oldInt = oldChar.code
+        val newInt = newChar.code
         val interpolatedInt = (oldInt + fraction * (newInt - oldInt)).toInt()
         return interpolatedInt.toChar()
     }
@@ -197,5 +253,101 @@ class MainActivity2 : AppCompatActivity() {
         return Color.argb(255, r, g, b)
     }
 
+    private fun checkTodo(todo: AppData.Todo):Boolean {
+        var f = true
+        if (todo.name.isEmpty()) {
+            Toast.makeText(applicationContext, "请输入事务名称", Toast.LENGTH_SHORT).show()
+            f = false
+        }
+        if (todo.startTime.data == -1L) {
+            Toast.makeText(applicationContext, "请选择开始时间", Toast.LENGTH_SHORT).show()
+            f = false
+        }
+        if (todo.endTime.data == -1L) {
+            Toast.makeText(applicationContext, "请选择结束时间", Toast.LENGTH_SHORT).show()
+            f = false
+        }
+        return f
+    }
+
+    // add animation to Switch
+    private fun animateSwitch(switch : com.suke.widget.SwitchButton,
+                              linearLayout : LinearLayout, textView: TextView) {
+
+        val originalBackground = linearLayout.background
+        switch.setOnCheckedChangeListener { _, isChecked ->
+            val startColor = Color.WHITE // 起始颜色
+            val endColor = 0xFF6200EE.toInt() // 结束颜色
+            val gradientDrawable = GradientDrawable(
+                GradientDrawable.Orientation.RIGHT_LEFT,
+                intArrayOf(startColor, startColor)
+            ) // 创建渐变背景
+            gradientDrawable.cornerRadius = 25f // 设置圆角
+
+            val layerDrawable = LayerDrawable(
+                arrayOf(gradientDrawable, originalBackground)
+            ) // 创建层叠背景
+
+            if (isChecked) {
+                val backgroundAnimator = ValueAnimator.ofObject(
+                    ArgbEvaluator(),
+                    startColor,
+                    endColor
+                ).apply {
+                    duration = 300 // 动画持续时间，单位为毫秒
+                    addUpdateListener { animator ->
+                        val color = animator.animatedValue as Int
+                        gradientDrawable.colors = intArrayOf(startColor, color)
+                        linearLayout.background = layerDrawable
+                    }
+                }
+                backgroundAnimator.start()
+
+                val textAnimator = ValueAnimator.ofObject(
+                    ArgbEvaluator(),
+                    Color.BLACK,
+                    Color.WHITE
+                ).apply {
+                    duration = 200 // 动画持续时间，单位为毫秒
+                    addUpdateListener { animator ->
+                        val color = animator.animatedValue as Int
+                        textView.setTextColor(color)
+                    }
+                }
+                textAnimator.start()
+            } else {
+                val backgroundAnimator = ValueAnimator.ofObject(
+                    ArgbEvaluator(),
+                    endColor,
+                    startColor
+                ).apply {
+                    duration = 300 // 动画持续时间，单位为毫秒
+                    addUpdateListener { animator ->
+                        val color = animator.animatedValue as Int
+                        gradientDrawable.colors = intArrayOf(startColor, color)
+                        linearLayout.background = layerDrawable
+                    }
+                }
+                backgroundAnimator.start()
+
+                val textAnimator = ValueAnimator.ofObject(
+                    ArgbEvaluator(),
+                    Color.WHITE,
+                    Color.BLACK
+                ).apply {
+                    duration = 200 // 动画持续时间，单位为毫秒
+                    addUpdateListener { animator ->
+                        val color = animator.animatedValue as Int
+                        textView.setTextColor(color)
+                    }
+                }
+                textAnimator.start()
+            }
+        }
+
+
+
+
+    }
 
 }

@@ -23,6 +23,7 @@
         app:layout_constraintVertical_bias="0.13">
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -99,8 +100,8 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="295dp"
+            android:layout_height="80dp"
             android:gravity="center"
             android:layout_margin="10dp"
             android:orientation="horizontal">
@@ -112,6 +113,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:background="@drawable/timepickbtn"
+                android:layout_marginStart="10dp"
                 android:text="Start\ntime"
                 android:textSize="16sp" />
 
@@ -131,6 +133,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:background="@drawable/timepickbtn"
+                android:layout_marginEnd="10dp"
                 android:text="End\ntime"
                 android:textSize="16sp" />
 
