@@ -82,13 +82,7 @@ class MainActivity2 : AppCompatActivity() {
         animateTimePickerButton(button3, "请选择事务开始时间", startTime)
         animateTimePickerButton(button4, "请选择事务结束时间", endTime)
 
-//        val file = File("file/data.json")
-//        val inputStream = FileInputStream(file)
-//        val length = inputStream.available()
-//        val buffer = ByteArray(length)
-//        inputStream.read(buffer)
-//        val json = String(buffer, Charsets.UTF_8)
-//        inputStream.close()
+
 
         //
         val data = intent.getStringExtra("extra_data")
@@ -103,16 +97,18 @@ class MainActivity2 : AppCompatActivity() {
             val name = editText.text.toString()
             val isTop = switch.isEnabled
             val isRep = switch2.isEnabled
-            val todo = AppData.Todo(name, type, startTime, endTime, isTop, isRep)
-
+            val todo = AppData.Todo(name, type, startTime.data, endTime.data, isTop, isRep)
+            // TODO: save data
             if (checkTodo(todo)) {
+                Log.d("2222222222", todo.toString())
+                val intent = Intent()
+                intent.putExtra("todo", todo)
+                setResult(RESULT_OK, intent)
                 finish()
             }
         }
 
-        val intent = Intent()
-        intent.putExtra("data_return", "Hello FirstActivity")
-        setResult(RESULT_OK, intent)
+
     }
 
     // add animation to RadioButton
@@ -259,11 +255,11 @@ class MainActivity2 : AppCompatActivity() {
             Toast.makeText(applicationContext, "请输入事务名称", Toast.LENGTH_SHORT).show()
             f = false
         }
-        if (todo.startTime.data == -1L) {
+        if (todo.startTime == -1L) {
             Toast.makeText(applicationContext, "请选择开始时间", Toast.LENGTH_SHORT).show()
             f = false
         }
-        if (todo.endTime.data == -1L) {
+        if (todo.endTime == -1L) {
             Toast.makeText(applicationContext, "请选择结束时间", Toast.LENGTH_SHORT).show()
             f = false
         }
