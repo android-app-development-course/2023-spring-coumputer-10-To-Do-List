@@ -6,6 +6,205 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
+    <View
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/edittext_background"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/radio_button_daliy"
+                android:paddingVertical="10dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="10dp"
+                android:text="日常"
+                android:textSize="18sp"
+                android:textColor="@color/purple_500"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableTop="@drawable/radio_button_work"
+                android:padding="10dp"
+                android:text="学习"
+                android:textSize="18sp"
+                android:textColor="@color/purple_200"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableTop="@drawable/radio_button_sport"
+                android:padding="10dp"
+                android:text="运动"
+                android:textSize="18sp"
+                android:textColor="@color/purple_200"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableTop="@drawable/radio_button_fun"
+                android:paddingVertical="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="15dp"
+                android:text="娱乐"
+                android:textColor="@color/purple_200"
+                android:textSize="18sp"
+                android:textAlignment="center" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/editText"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            android:layout_width="240dp"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/activity"
+            android:textSize="20sp"
+            android:inputType="text" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="295dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/timepickbtn"
+                android:layout_marginStart="10dp"
+                android:text="Start\ntime"
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/textView"
+                android:layout_width="15dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@color/black"
+                android:gravity="center"
+                android:layout_marginHorizontal="10dp" />
+
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/timepickbtn"
+                android:layout_marginEnd="10dp"
+                android:text="End\ntime"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/edittext_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="是否置顶"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                tools:ignore="RtlHardcoded" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                app:sb_checked_color="@color/purple_500"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="是否每日循环"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                tools:ignore="RtlHardcoded" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                app:sb_checked_color="@color/purple_500"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/button2"
         android:layout_width="80dp"
@@ -14,132 +213,10 @@
         android:showText="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="66dp"
-        android:layout_height="36dp"
-        android:showText="false"
-        android:thumb="@drawable/switch_button"
-        android:track="@drawable/switch_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
-
-    <EditText
-        android:id="@+id/editTextTextPostalAddress"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:background="@drawable/edittext_background"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/activity"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:background="@drawable/edittext_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.113">
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableTop="@drawable/radio_daliy"
-            android:paddingLeft="15dp"
-            android:paddingRight="10dp"
-            android:paddingVertical="10dp"
-            android:text="日常"
-            android:checked="true"
-            android:textAlignment="center" />
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableTop="@drawable/radio_work"
-            android:padding="10dp"
-            android:text="学习"
-            android:textAlignment="center" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableTop="@drawable/radio_sport"
-            android:padding="10dp"
-            android:text="运动"
-            android:textAlignment="center" />
-
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableTop="@drawable/radio_joy"
-            android:paddingLeft="10dp"
-            android:paddingRight="15dp"
-            android:paddingVertical="10dp"
-            android:text="娱乐"
-            android:textAlignment="center" />
-    </RadioGroup>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="3.15 10:25"
-            android:backgroud="@drawable/timepicker_button"
-            android:layout_margin="10dp" />
-
-        <View
-            android:layout_width="10dp"
-            android:layout_height="match_parent" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="3.15 10:25"
-
-            android:layout_margin="10dp" />
-
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
