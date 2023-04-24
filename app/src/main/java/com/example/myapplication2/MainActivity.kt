@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -88,10 +90,21 @@ class MainActivity : AppCompatActivity() {
         var allTodo = AppData.AllToDo(top, rep, other)
 
 
+        //
+//        val linearTop = findViewById<LinearLayout>(R.id.linearTop)
+//        val linearRep = findViewById<LinearLayout>(R.id.linearRep)
+//        val linearOther = findViewById<LinearLayout>(R.id.linearOther)
+//        val viewTop = findViewById<View>(R.id.viewTop)
+//        val viewRep = findViewById<View>(R.id.viewRep)
+//        val viewOther = findViewById<View>(R.id.viewOther)
+//        val linearTopEntry = findViewById<LinearLayout>(R.id.linearTopEntry)
+//        val linearRepEntry = findViewById<LinearLayout>(R.id.linearRepEntry)
+//        val linearOtherEntry = findViewById<LinearLayout>(R.id.linearOtherEntry)
 
-        val button = findViewById<Button>(R.id.button)
+
 
         // 数据传递
+        val button = findViewById<Button>(R.id.button)
         button.setOnClickListener{
             val data = "Hello SecondActivity"
 
@@ -100,14 +113,13 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
 
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {
             val todo = data?.getParcelableExtra<AppData.Todo>("todo")
+
             Log.d("111111111", todo.toString())
         }
     }

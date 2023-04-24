@@ -6,6 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="600dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/linearTop"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="15dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/viewTop"-->
+<!--                    android:layout_width="60dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/class_view"-->
+<!--                    android:gravity="center">-->
+
+<!--                    <View-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:background="@drawable/ic_launcher_foreground" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/linearTopEntry"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:orientation="vertical"></LinearLayout>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/linearRep"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginHorizontal="15dp"-->
+<!--                android:layout_marginBottom="15dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/viewRep"-->
+<!--                    android:layout_width="60dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/class_view"-->
+<!--                    android:gravity="center">-->
+
+<!--                    <View-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:background="@drawable/ic_launcher_foreground" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/linearRepEntry"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:orientation="vertical" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/linearOther"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginHorizontal="15dp"-->
+<!--                android:layout_marginBottom="15dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/viewOther"-->
+<!--                    android:layout_width="60dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/class_view"-->
+<!--                    android:gravity="center">-->
+
+<!--                    <View-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:background="@drawable/ic_launcher_foreground" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/linearOtherEntry"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:orientation="vertical" />-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
+
     <Button
         android:id="@+id/button"
         android:layout_width="80dp"
@@ -18,5 +122,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
