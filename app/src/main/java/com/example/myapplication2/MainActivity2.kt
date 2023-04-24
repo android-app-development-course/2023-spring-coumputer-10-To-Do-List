@@ -98,7 +98,6 @@ class MainActivity2 : AppCompatActivity() {
             val isTop = switch.isEnabled
             val isRep = switch2.isEnabled
             val todo = AppData.Todo(name, type, startTime.data, endTime.data, isTop, isRep)
-            // TODO: save data
             if (checkTodo(todo)) {
                 Log.d("2222222222", todo.toString())
                 val intent = Intent()
