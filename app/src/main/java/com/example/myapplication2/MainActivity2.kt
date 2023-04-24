@@ -95,8 +95,8 @@ class MainActivity2 : AppCompatActivity() {
         button2.setOnClickListener {
             val type = radioGroup.checkedRadioButtonId
             val name = editText.text.toString()
-            val isTop = switch.isEnabled
-            val isRep = switch2.isEnabled
+            val isTop = switch.isChecked
+            val isRep = switch2.isChecked
             val todo = AppData.Todo(name, type, startTime.data, endTime.data, isTop, isRep)
             if (checkTodo(todo)) {
                 Log.d("2222222222", todo.toString())
