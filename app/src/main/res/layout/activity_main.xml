@@ -31,15 +31,15 @@
 
                 <LinearLayout
                     android:id="@+id/viewTop"
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/class_view"
                     android:gravity="center">
 
                     <View
-                        android:layout_width="30dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/ic_launcher_foreground" />
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/top" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -61,15 +61,15 @@
 
                 <LinearLayout
                     android:id="@+id/viewRep"
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/class_view"
                     android:gravity="center">
 
                     <View
-                        android:layout_width="30dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/ic_launcher_foreground" />
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:background="@drawable/repeat" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -90,15 +90,15 @@
 
                 <LinearLayout
                     android:id="@+id/viewOther"
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/class_view"
                     android:gravity="center">
 
                     <View
                         android:layout_width="30dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/ic_launcher_foreground" />
+                        android:layout_height="30dp"
+                        android:background="@drawable/other" />
                 </LinearLayout>
 
                 <LinearLayout
