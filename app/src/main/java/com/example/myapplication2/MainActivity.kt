@@ -138,12 +138,6 @@ class MainActivity : AppCompatActivity() {
         for (i in AppData.global.other) viewTodo(i)
 
 
-        val button5 = findViewById<Button>(R.id.button5)
-        button5.setOnClickListener {
-            val tmp = AppData.Todo("吃饭", 1, 123, 456, true, true)
-            viewTodo(tmp)
-            Log.d("json", gson.toJson(tmp))
-        }
 
 
 

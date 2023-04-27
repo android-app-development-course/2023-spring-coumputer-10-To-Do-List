@@ -1,5 +1,5 @@
 {
-  "top" : [{"endTime":456,"isTop":true,"isRep":true,"name":"吃饭","startTime":123,"type":1}],
-  "rep" : [{"endTime":456,"isTop":false,"isRep":true,"name":"打篮球","startTime":123,"type":3}],
-  "other" : [{"endTime":456,"isTop":false,"isRep":false,"name":"写项目","startTime":123,"type":2}]
+  "top" : [],
+  "rep" : [],
+  "other" : []
 }
