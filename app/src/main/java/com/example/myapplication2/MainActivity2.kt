@@ -93,7 +93,7 @@ class MainActivity2 : AppCompatActivity() {
 
         val button2 = findViewById<Button>(R.id.button2)
         button2.setOnClickListener {
-            var type = radioGroup.checkedRadioButtonId
+            var type = radioGroup.indexOfChild(findViewById<RadioButton>(radioGroup.checkedRadioButtonId))
             val name = editText.text.toString()
             val isTop = switch.isChecked
             val isRep = switch2.isChecked
