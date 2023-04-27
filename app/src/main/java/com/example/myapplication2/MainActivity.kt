@@ -16,10 +16,8 @@ import androidx.core.view.*
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.reflect.typeOf
 
 
 object AppData {
