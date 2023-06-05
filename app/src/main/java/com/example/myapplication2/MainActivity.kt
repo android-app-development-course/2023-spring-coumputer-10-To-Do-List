@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -214,6 +215,20 @@ class MainActivity : AppCompatActivity() {
         res.addView(textView)
 
 
+        val frameLayout = findViewById<FrameLayout>(R.id.frameLayout)
+        val timeView = TextView(this)
+        timeView.setBackgroundResource(R.drawable.edittext_background)
+        textView.textSize = 30f
+        timeView.gravity = Gravity.CENTER
+        val timeParams5 = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        timeView.layoutParams = timeParams5
+
+
+
+
         val typeStr = arrayOf("日\n常", "学\n习", "运\n动", "娱\n乐")
         val textView3 = TextView(this)
         textView3.text = typeStr[todo.type]
@@ -266,7 +281,7 @@ class MainActivity : AppCompatActivity() {
                         val secs = seconds % 60
 
                         val time = String.format("%02d:%02d:%02d", hours, minutes, secs)
-                        textView.text = time
+                        timeView.text = time
 
                         if (isRunning) {
                             seconds++
@@ -275,11 +290,14 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
                 isRunning = true
+                frameLayout.addView(timeView)
             } else {
                 handler.removeCallbacksAndMessages(null)
                 seconds = 0
-                textView.text = startTimeString + "\n" + endTimeString
+                timeView.text = startTimeString + "\n" + endTimeString
                 isRunning = false
+
+                frameLayout.removeAllViews()
             }
         }
         res.addView(button)
@@ -301,6 +319,7 @@ class MainActivity : AppCompatActivity() {
             }
             anim.duration = 300
             anim.start()
+
         }
         res.addView(button2)
 
