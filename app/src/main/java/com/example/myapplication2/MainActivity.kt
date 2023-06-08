@@ -137,8 +137,12 @@ class MainActivity : AppCompatActivity() {
         for (i in AppData.global.other) viewTodo(i)
 
 
-
-
+        // 登录按钮
+        val buttonZ = findViewById<Button>(R.id.buttonZ)
+        buttonZ.setOnClickListener {
+            val intent2 = Intent(this, MainActivity3::class.java)
+            startActivity(intent2)
+        }
 
         // 数据传递
         val button = findViewById<Button>(R.id.button)
