@@ -46,7 +46,7 @@ class MainActivity3 : AppCompatActivity() {
 
         val button_register = findViewById<Button>(R.id.register)
         button_register.setOnClickListener{
-            val intent = Intent(this, MainActivity2::class.java)
+            val intent = Intent(this, MainActivity4::class.java)
             startActivity(intent)
         }
 
